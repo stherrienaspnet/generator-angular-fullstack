@@ -96,7 +96,7 @@ export class Generator extends Base {
       },
       info: function () {
         this.log(this.yoWelcome);
-        this.log('Out of the box I create an AngularJS app with an Express server.\n');
+        this.log('i18n Out of the box I create an AngularJS app with an Express server.\n');
       },
       checkForConfig: function() {
         var existingFilters = this.config.get('filters');
@@ -186,6 +186,11 @@ export class Generator extends Base {
             message: 'What Angular router would you like to use?',
             choices: ['ngRoute', 'uiRouter'],
             filter: val => val.toLowerCase()
+          },{
+            type: 'confirm',
+            name: 'i18nSupport',
+            default: true,
+            message: 'Would you like to include i18n (multi-language) support?',
           }, {
             type: 'confirm',
             name: 'bootstrap',
@@ -217,6 +222,9 @@ export class Generator extends Base {
 
             this.filters.uibootstrap =  !!answers.uibootstrap;
             insight.track('uibootstrap', !!answers.uibootstrap);
+
+            this.filters.i18nSupport =  !!answers.i18nSupport;
+            insight.track('i18nSupport', !!answers.i18nSupport);
 
             this.scriptExt = answers.transpiler === 'ts' ? 'ts' : 'js';
             this.templateExt = answers.markup;
@@ -443,6 +451,8 @@ export class Generator extends Base {
         if(this.filters.socketio) angModules.push("'btford.socket-io'");
         if(this.filters.uirouter) angModules.push("'ui.router'");
         if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");
+        if(this.filters.i18nSupport) angModules.push("'pascalprecht.translate'");
+
         if(this.filters.auth) {
           angModules.unshift(`'${this.scriptAppName}.admin'`);
           angModules.unshift(`'${this.scriptAppName}.auth'`);
@@ -547,6 +557,7 @@ export class Generator extends Base {
             ['uiBootstrap', 'angular-ui-bootstrap'],
             ['ngMessages', 'angular-messages'],
             ['io', 'socket.io-client']
+            //i18nSupport???
           ];
           function replacer(contents) {
             modulesToFix.forEach(([moduleName, importName]) => {
