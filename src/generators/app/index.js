@@ -96,7 +96,7 @@ export class Generator extends Base {
       },
       info: function () {
         this.log(this.yoWelcome);
-        this.log('i18n Out of the box I create an AngularJS app with an Express server.\n');
+        this.log('Out of the box I create an AngularJS app with an Express server.\n');
       },
       checkForConfig: function() {
         var existingFilters = this.config.get('filters');
@@ -190,7 +190,7 @@ export class Generator extends Base {
             type: 'confirm',
             name: 'i18nSupport',
             default: true,
-            message: 'Would you like to include i18n (multi-language) support?',
+            message: 'Would you like to include i18n support (multi-language)?',
           }, {
             type: 'confirm',
             name: 'bootstrap',
@@ -451,7 +451,7 @@ export class Generator extends Base {
         if(this.filters.socketio) angModules.push("'btford.socket-io'");
         if(this.filters.uirouter) angModules.push("'ui.router'");
         if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");
-        if(this.filters.i18nSupport) angModules.push("'pascalprecht.translate'");
+       // if(this.filters.i18nSupport) angModules.push("'pascalprecht.translate'");
 
         if(this.filters.auth) {
           angModules.unshift(`'${this.scriptAppName}.admin'`);
