@@ -3,6 +3,10 @@
 <%_ if(filters.oauth) { -%>
 @import '~bootstrap-social/bootstrap-social.css';
 <%_ } -%>
+
+<% if (filters.i18nSupport) { %>
+@import '../assets/i18n/flags.css'; 
+<% } %>
 /**
  * Bootstrap Fonts
  */
