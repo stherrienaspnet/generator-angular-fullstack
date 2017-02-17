@@ -4,7 +4,12 @@ import angular from 'angular';
 
 export class NavbarComponent {
   menu = [{
-    'title': 'Home',
+    <% if (filters.i18nSupport) { %>
+      'title': 'HOME', 
+    <% } %>
+    <% if (!filters.i18nSupport) { %>
+      'title': 'Home',  
+    <% } %>
     <% if (filters.uirouter) { %>'state': 'main'<% } else { %>'link': '/'<% } %>
   }];
   <%_ if(!filters.uirouter) { -%>
@@ -18,8 +23,12 @@ export class NavbarComponent {
   isCollapsed = true;
   <%_ if(filters.ngroute || filters.auth) { _%>
 
-  constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } if (filters.auth) { %>Auth<% } %>) {
+  constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } if (filters.auth) { %>Auth<% } %><% if (filters.i18nSupport) { %>, $translate<% } %>) {
     'ngInject';
+    <% if (filters.i18nSupport) { %>
+      this.$translate = $translate; 
+      this.currentLocale = $translate.proposedLanguage(); 
+    <% } %>
     <%_ if(!filters.uirouter) { _%>
     this.$location = $location;
     <%_ } _%>
@@ -35,6 +44,13 @@ export class NavbarComponent {
     return route === this.$location.path();
   }<% } %>
 }
+
+<% if (filters.i18nSupport) { %>
+  changeLocale(localeKey){ 
+    this.$translate.use(localeKey); 
+    this.currentLocale = localeKey; 
+  } 
+<% } %>
 
 export default angular.module('directives.navbar', [])
   .component('navbar', {
