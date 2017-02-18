@@ -4,12 +4,7 @@ import angular from 'angular';
 
 export class NavbarComponent {
   menu = [{
-    <% if (filters.i18nSupport) { %>
-      'title': 'HOME', 
-    <% } %>
-    <% if (!filters.i18nSupport) { %>
-      'title': 'Home',  
-    <% } %>
+    <% if (filters.i18nSupport) { %>'title': 'HOME'<% } else { %>'title': 'Home'<% } %>,
     <% if (filters.uirouter) { %>'state': 'main'<% } else { %>'link': '/'<% } %>
   }];
   <%_ if(!filters.uirouter) { -%>
@@ -25,13 +20,15 @@ export class NavbarComponent {
 
   constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } if (filters.auth) { %>Auth<% } %><% if (filters.i18nSupport) { %>, $translate<% } %>) {
     'ngInject';
-    <% if (filters.i18nSupport) { %>
-      this.$translate = $translate; 
-      this.currentLocale = $translate.proposedLanguage(); 
-    <% } %>
     <%_ if(!filters.uirouter) { _%>
     this.$location = $location;
     <%_ } _%>
+
+    <%_ if(filters.i18nSupport) { _%>
+    this.$translate = $translate; 
+    this.currentLocale = $translate.proposedLanguage(); 
+    <%_ } _%>
+
     <%_ if (filters.auth) { _%>
     this.isLoggedIn = Auth.isLoggedInSync;
     this.isAdmin = Auth.isAdminSync;
@@ -43,14 +40,14 @@ export class NavbarComponent {
   isActive(route) {
     return route === this.$location.path();
   }<% } %>
-}
 
-<% if (filters.i18nSupport) { %>
+  <%_ if (filters.i18nSupport) { _%>
   changeLocale(localeKey){ 
     this.$translate.use(localeKey); 
     this.currentLocale = localeKey; 
   } 
-<% } %>
+  <%_ } _%>
+}
 
 export default angular.module('directives.navbar', [])
   .component('navbar', {
