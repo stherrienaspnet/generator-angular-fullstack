@@ -1,6 +1,21 @@
 .container
   .row
     .col-sm-12
+    <% if (filters.i18nSupport) { %>
+      h1(translate='LOGIN')
+      p
+        | {{'ACCOUNT_RESET_MSG' | translate}} 
+        code server/config/seed.js
+        | . {{'DEFAUL_ACCOUNT_MSG' | translate}} 
+        code test@example.com
+        |  / 
+        code test
+      p
+        | {{'ADMIN_ACCOUNT_IS_MSG' | translate}}
+        code admin@example.com
+        |  / 
+        code admin
+    <% } else { %>
       h1 Login
       p
         | Accounts are reset on server restart from
@@ -14,27 +29,53 @@
         code admin@example.com
         | /
         code admin
+    <% } %>
 
     .col-sm-12
       form.form(name='form', ng-submit='vm.login(form)', novalidate='')
         .form-group
+          <% if (filters.i18nSupport) { %>
+          label(translate='EMAIL')
+          <% } else { %>
           label Email
+          <% } %>
           input.form-control(type='email', name='email', ng-model='vm.user.email')
         .form-group
+          <% if (filters.i18nSupport) { %>
+          label(translate='PASSWORD')
+          <% } else { %>
           label Password
+          <% } %>        
           input.form-control(type='password', name='password', ng-model='vm.user.password')
 
         .form-group.has-error
+          <% if (filters.i18nSupport) { %>
+          p.help-block(ng-show='form.email.$error.required && form.password.$error.required && vm.submitted', translate='ENTER_EMAIL_PASSWORD_MSG')
+          <% } else { %>
           p.help-block(ng-show='form.email.$error.required && form.password.$error.required && vm.submitted')
             | Please enter your email and password.
-          p.help-block {{ vm.errors.login }}
+          <% } %>        
 
+          <% if (filters.i18nSupport) { %>
+          <p class="help-block">{{ vm.errors.login | translate }}</p> 
+          <% } else { %>
+          <p class="help-block">{{ vm.errors.login }}</p> 
+          <% } %>
         div
+          <% if (filters.i18nSupport) { %>
+          button.btn.btn-inverse.btn-lg.btn-login(type='submit', translate='LOGIN')
+          <% } else { %>
           button.btn.btn-inverse.btn-lg.btn-login(type='submit')
             | Login
+          <% } %>
           = ' '
+          <% if (filters.i18nSupport) { %>
+          a.btn.btn-default.btn-lg.btn-register(<% if (filters.uirouter) { %>ui-sref='signup'<% } else { %>href='/signup'<% } %>, translate="REGISTER")
+          <% } else { %>
           a.btn.btn-default.btn-lg.btn-register(<% if (filters.uirouter) { %>ui-sref='signup'<% } else { %>href='/signup'<% } %>)
             | Register
+          <% } %>
+
 <% if (filters.oauth) {%>
         hr
 

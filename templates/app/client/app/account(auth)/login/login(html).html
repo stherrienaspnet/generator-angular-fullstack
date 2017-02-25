@@ -13,37 +13,67 @@
     </div>
     <div class="col-sm-12">
       <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
-
         <div class="form-group">
-          <label<% if (filters.i18nSupport) { %> translate="EMAIL"<% } %>><% if (!filters.i18nSupport) { %>Email<% } %></label>
-
+          <% if (filters.i18nSupport) { %>
+          <label translate="EMAIL"></label> 
+          <% } else { %>
+          <label>Email</label> 
+          <% } %>
           <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
         </div>
-
         <div class="form-group">
-          <label<% if (filters.i18nSupport) { %> translate="PASSWORD"<% } %>><% if (!filters.i18nSupport) { %>Password<% } %></label>
-
+          <% if (filters.i18nSupport) { %>
+          <label translate="PASSWORD"></label>
+          <% } else { %>
+          <label>Password</label>
+          <% } %>
           <input type="password" name="password" class="form-control" ng-model="vm.user.password" required>
         </div>
 
         <div class="form-group has-error">
-          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted"<% if (filters.i18nSupport) { %> translate="ENTER_EMAIL_PASSWORD_MSG"<% } %>>
-             <% if (!filters.i18nSupport) { %>Please enter your email and password.<% } %>
-          </p>
-          <p class="help-block" ng-show="form.email.$error.email && vm.submitted"<% if (filters.i18nSupport) { %> translate="ENTER_VALID_EMAIL_MSG"<% } %>>
-             <% if (!filters.i18nSupport) { %>Please enter a valid email.<% } %>
-          </p>
+          <% if (filters.i18nSupport) { %>
+          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted" translate="ENTER_EMAIL_PASSWORD_MSG">
+          </p> 
+          <% } else { %>
+          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted"> 
+             Please enter your email and password. 
+          </p> 
+          <% } %>
 
-          <p class="help-block">{{ vm.errors.login <% if (filters.i18nSupport) { %>| translate<% } %> }}</p>
+          <% if (filters.i18nSupport) { %>
+          <p class="help-block" ng-show="form.email.$error.email && vm.submitted" translate="ENTER_VALID_EMAIL_MSG"> 
+          </p> 
+          <% } else { %>
+          <p class="help-block" ng-show="form.email.$error.email && vm.submitted"> 
+             Please enter a valid email.
+          </p>  
+          <% } %>
+
+          <% if (filters.i18nSupport) { %>
+          <p class="help-block">{{ vm.errors.login | translate }}</p> 
+          <% } else { %>
+          <p class="help-block">{{ vm.errors.login }}</p> 
+          <% } %>
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit"<% if (filters.i18nSupport) { %> translate="LOGIN"<% } %>>
-            <% if (!filters.i18nSupport) { %>Login<% } %>
-          </button>
-          <a class="btn btn-default btn-lg btn-register" <% if (filters.uirouter) { %>ui-sref="signup"<% } else { %>href="/signup"<% } %><% if (filters.i18nSupport) { %> translate="REGISTER"<% } %>>
-            <% if (!filters.i18nSupport) { %>Register<% } %>
+          <% if (filters.i18nSupport) { %>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit" translate="LOGIN"> 
+          </button> 
+          <% } else { %>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit"> 
+            Login 
+          </button>             
+          <% } %>
+
+          <% if (filters.i18nSupport) { %>
+          <a class="btn btn-default btn-lg btn-register" <% if (filters.uirouter) { %>ui-sref="signup"<% } else { %>href="/signup"<% } %>  translate="REGISTER">
           </a>
+          <% } else { %>
+          <a class="btn btn-default btn-lg btn-register" <% if (filters.uirouter) { %>ui-sref="signup"<% } else { %>href="/signup"<% } %>>
+            Register
+          </a>
+          <% } %>
         </div>
 <% if (filters.oauth) { %>
         <hr/>
