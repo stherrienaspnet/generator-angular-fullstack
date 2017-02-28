@@ -24,7 +24,7 @@ div.navbar.navbar-default.navbar-static-top
           a(<% if (filters.uirouter) { %>ui-sref='login'<% } else { %>href='/login'<% } %>) Login
 
         li(ng-show='$ctrl.isLoggedIn()')
-          p.navbar-text Hello {{ $ctrl.getCurrentUser().name }}
+          p.navbar-text Hello {{ $ctrl.getCurrentUser().name }} 
 
         li(ng-show='$ctrl.isLoggedIn()', <% if (filters.uirouter) { %>ui-sref-active='active'<% } else { %>ng-class='{active: $ctrl.isActive("/settings")}'<% } %>)
           a(<% if (filters.uirouter) { %>ui-sref='settings'<% } else { %>href='/settings'<% } %>)
