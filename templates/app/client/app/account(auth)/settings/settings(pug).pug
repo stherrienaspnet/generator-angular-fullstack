@@ -28,7 +28,7 @@
             match="vm.user.newPassword"
             ng-minlength='3', required='')
           p.help-block(ng-show='fvm.orm.confirmPassword.$error.match && vm.submitted'<% if (filters.i18nSupport) { %> translate="PASSWORDS_MATCH_MSG"<% } %>)
-            | <% if (!filters.i18nSupport) { %Passwords must match.><% } %>
+            | <% if (!filters.i18nSupport) { %>Passwords must match.<% } %>
 
         p.help-block  {{ vm.message }}
 

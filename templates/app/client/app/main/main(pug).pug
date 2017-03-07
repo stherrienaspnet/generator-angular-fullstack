@@ -7,7 +7,7 @@ header#banner.hero-unit
 .container
   .row
     .col-lg-12
-      h1.page-header Features:
+      h1.page-header <% if (filters.i18nSupport) { %>{{('FEATURES' | translate) + ':'}}<% } else { %>Features:<% } %>
       ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in $ctrl.awesomeThings')
         li
           a(href='#', uib-tooltip='{{thing.info}}')
@@ -17,6 +17,6 @@ header#banner.hero-unit
   form.thing-form
     label<% if (filters.i18nSupport) { %>(translate="REAL_TIME_SYNC_MSG")<% } else { %> Syncs in realtime across clients<% } %>
     p.input-group
-      input.form-control(type='text', placeholder='Add a new thing here.', ng-model='$ctrl.newThing')
+      input.form-control(type='text', placeholder="<% if (filters.i18nSupport) { %>{{'ADD_NEW_THING_HERE'| translate}}<% } else { %>Add a new thing here.<% } %>", ng-model='$ctrl.newThing')
       span.input-group-btn
         button.btn.btn-primary(type='submit', ng-click='$ctrl.addThing()'<% if (filters.i18nSupport) { %> translate="ADD_NEW"<% } %>) <% if (!filters.i18nSupport) { %>Add New<% } %><% } %>
