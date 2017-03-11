@@ -4,6 +4,7 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
+import ngValidationMatch from 'angular-validation-match';
 <%_ if(filters.socketio) { _%>
 import 'angular-socket-io';<% } %>
 <%_ if(filters.ngroute) { _%>
@@ -14,7 +15,7 @@ import uiRouter from 'angular-ui-router';<% } %>
 import uiBootstrap from 'angular-ui-bootstrap';<% } %>
 // import ngMessages from 'angular-messages';
 <%_ if(filters.auth) { _%>
-// import ngValidationMatch from 'angular-validation-match';<% } %>
+<% } %>
 
 <% if (filters.i18nSupport) { %>
 import i18n from 'angular-translate'; 
@@ -44,6 +45,7 @@ angular.module('<%= scriptAppName %>', [
   ngCookies,
   ngResource,
   ngSanitize,
+  'validation.match',
   <%_ if(filters.socketio) { %>
   'btford.socket-io',<% } %>
   <%_ if(filters.ngroute) { %>
