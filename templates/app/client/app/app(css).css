@@ -4,9 +4,6 @@
 @import '~bootstrap-social/bootstrap-social.css';
 <%_ } -%>
 
-<% if (filters.i18nSupport) { %>
-@import '../assets/i18n/flags.css'; 
-<% } %>
 /**
  * Bootstrap Fonts
  */
@@ -48,6 +45,11 @@
   color: #000;
   padding: 0.2em 0;
 }
+
+<% if (filters.i18nSupport) { %>
+@import '../assets/i18n/flags.css'; 
+<% } %>
+
 <% if(!filters.bootstrap) { %>
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

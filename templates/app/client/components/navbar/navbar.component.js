@@ -16,9 +16,11 @@ export class NavbarComponent {
   getCurrentUser: Function;
   <%_ } -%>
   isCollapsed = true;
-  <%_ if(filters.ngroute || filters.auth) { _%>
+  <%_ if(filters.ngroute || filters.auth || filters.i18nSupport) { _%>
 
-  constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } if (filters.auth) { %>Auth<% } %><% if (filters.i18nSupport) { %>, $translate<% } %>) {
+  constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } 
+  if (filters.auth) { %>Auth<% } if (!filters.uirouter || filters.auth) { %>, <% } if (filters.i18nSupport) { %>$translate<% } %>) {  
+    
     'ngInject';
     <%_ if(!filters.uirouter) { _%>
     this.$location = $location;
@@ -34,9 +36,10 @@ export class NavbarComponent {
     this.isAdmin = Auth.isAdminSync;
     this.getCurrentUser = Auth.getCurrentUserSync;
     <%_ } _%>
-  }<% } %>
-  <%_ if(!filters.uirouter) { _%>
 
+  }<% } %>
+
+  <%_ if(!filters.uirouter) { _%>
   isActive(route) {
     return route === this.$location.path();
   }<% } %>

@@ -452,7 +452,6 @@ export class Generator extends Base {
         if(this.filters.socketio) angModules.push("'btford.socket-io'");
         if(this.filters.uirouter) angModules.push("'ui.router'");
         if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");
-       // if(this.filters.i18nSupport) angModules.push("'pascalprecht.translate'");
 
         if(this.filters.auth) {
           angModules.unshift(`'${this.scriptAppName}.admin'`);
