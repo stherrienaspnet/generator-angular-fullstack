@@ -19,7 +19,7 @@ export class NavbarComponent {
   <%_ if(filters.ngroute || filters.auth || filters.i18nSupport) { _%>
 
   constructor(<% if(!filters.uirouter) { %>$location<% } if(!filters.uirouter && filters.auth) { %>, <% } 
-  if (filters.auth) { %>Auth<% } if (!filters.uirouter || filters.auth) { %>, <% } if (filters.i18nSupport) { %>$translate<% } %>) {  
+  if (filters.auth) { %>Auth<% } if (filters.i18nSupport && (!filters.uirouter || filters.auth)) { %>, <% } if (filters.i18nSupport) { %>$translate<% } %>) {  
     
     'ngInject';
     <%_ if(!filters.uirouter) { _%>

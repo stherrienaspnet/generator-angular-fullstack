@@ -556,8 +556,11 @@ export class Generator extends Base {
             ['ngRoute', 'angular-route'],
             ['uiBootstrap', 'angular-ui-bootstrap'],
             ['ngMessages', 'angular-messages'],
-            ['io', 'socket.io-client']
-            //i18nSupport???
+            ['io', 'socket.io-client'],
+            ['i18n', 'angular-translate'],
+            ['i18nCookie', 'angular-translate-storage-cookie'],
+            ['i18nLocal', 'angular-translate-storage-local'],
+            ['i18nLoader', 'angular-translate-loader-static-files']
           ];
           function replacer(contents) {
             modulesToFix.forEach(([moduleName, importName]) => {
