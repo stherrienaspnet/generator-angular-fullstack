@@ -10,6 +10,10 @@ export class NavbarComponent {
   <%_ if(!filters.uirouter) { -%>
   $location;
   <%_ } -%>
+  <%_ if(filters.i18nSupport) { -%>
+  $translate;
+  currentLocale;
+  <%_ } -%>
   <%_ if (filters.auth) { -%>
   isLoggedIn: Function;
   isAdmin: Function;
