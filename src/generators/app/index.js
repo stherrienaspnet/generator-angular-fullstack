@@ -561,6 +561,7 @@ export class Generator extends Base {
             ['i18nCookie', 'angular-translate-storage-cookie'],
             ['i18nLocal', 'angular-translate-storage-local'],
             ['i18nLoader', 'angular-translate-loader-static-files']
+            ['ngValidationMatch', 'angular-validation-match'] 
           ];
           function replacer(contents) {
             modulesToFix.forEach(([moduleName, importName]) => {
