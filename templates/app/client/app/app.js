@@ -58,12 +58,9 @@ angular.module('<%= scriptAppName %>', [
   _Auth,
   account,
   admin,
-<<<<<<< HEAD
   'validation.match',<% } _%>
-=======
   'validation.match',
   <% } _%>
->>>>>>> f283e4c5e730cea3d7ac16798bfd479c52275df8
   navbar,
   footer,
   main,
