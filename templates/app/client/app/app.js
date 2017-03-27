@@ -58,7 +58,6 @@ angular.module('<%= scriptAppName %>', [
   _Auth,
   account,
   admin,
-  'validation.match',<% } _%>
   'validation.match',
   <% } _%>
   navbar,
