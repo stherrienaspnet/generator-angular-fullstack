@@ -20,7 +20,7 @@ $fa-font-path: '/assets/fonts/font-awesome/';
   padding: 0.2em 0;
 }
 <% if (filters.i18nSupport) { %>
-@import '../assets/i18n/flags.scss'; 
+@import '../components/i18n/flags.scss'; 
 <% } %>
 <% if(!filters.bootstrap) { %>
 /* Responsive: Portrait tablets and up */

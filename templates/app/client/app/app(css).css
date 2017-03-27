@@ -47,7 +47,7 @@
 }
 
 <% if (filters.i18nSupport) { %>
-@import '../assets/i18n/flags.css'; 
+@import '../components/i18n/flags.css'; 
 <% } %>
 
 <% if(!filters.bootstrap) { %>

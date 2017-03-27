@@ -20,7 +20,7 @@ export function routeConfig(<% if (filters.ngroute) { %>$routeProvider<% } if (f
     .fallbackLanguage("en") 
     .determinePreferredLanguage() 
     .useStaticFilesLoader({ 
-      'prefix': 'assets/i18n/locale-', 
+      'prefix': 'components/i18n/locale-', 
       'suffix': '.json' 
     }); 
 <% } %>
