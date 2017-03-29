@@ -28,7 +28,7 @@ const defaultOptions = {
   auth: true,
   oauth: [],
   socketio: true,
-  i18nSupport:true
+  i18nSupport:false
 };
 const TEST_DIR = __dirname;
 
@@ -202,7 +202,7 @@ describe('angular-fullstack:app', function() {
       socketio: true,
       bootstrap: true,
       uibootstrap: true,
-      i18nSupport:true
+      i18nSupport:false
     };
 
     before(function() {
@@ -275,7 +275,7 @@ describe('angular-fullstack:app', function() {
       socketio: true,
       bootstrap: true,
       uibootstrap: true,
-      i18nSupport:true,
+      i18nSupport:false,
     };
     this.retries(3);  // Sequelize seems to be quite flaky
 

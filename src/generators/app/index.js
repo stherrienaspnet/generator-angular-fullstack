@@ -190,7 +190,7 @@ export class Generator extends Base {
           },{
             type: 'confirm',
             name: 'i18nSupport',
-            default: true,
+            default: false,
             message: 'Would you like to include i18n support (multi-language)?',
           }, {
             type: 'confirm',
@@ -537,7 +537,7 @@ export class Generator extends Base {
             "end_with_newline": true
           }),
           eslint({
-            fix: true, 
+            fix: true,
             configFile: path.join(genDir, 'templates/app/client/.eslintrc(babel)')
           }),
           clientJsFilter.restore
@@ -561,7 +561,7 @@ export class Generator extends Base {
             ['i18nCookie', 'angular-translate-storage-cookie'],
             ['i18nLocal', 'angular-translate-storage-local'],
             ['i18nLoader', 'angular-translate-loader-static-files']
-            ['ngValidationMatch', 'angular-validation-match'] 
+            ['ngValidationMatch', 'angular-validation-match']
           ];
           function replacer(contents) {
             modulesToFix.forEach(([moduleName, importName]) => {
@@ -589,7 +589,7 @@ export class Generator extends Base {
         this.registerTransformStream([
           serverJsFilter,
           eslint({
-            fix: true, 
+            fix: true,
             configFile: path.join(genDir, 'templates/app/server/.eslintrc')
           }),
           serverJsFilter.restore
